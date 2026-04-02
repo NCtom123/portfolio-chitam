@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Nguyễn Chí Tâm</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6P5XcUVrZhticqD8eUQjRcX9+aweb/ahUmsFsTd0EFA2XmCvM51+UV23pbJM0/w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <nav id="navbar">
+    <div class="container">
+      <a href="#" class="logo">PORTFOLIO<span>.</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Mở menu">☰</button>
+      <div class="nav-right" id="navRight">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#skills">Kỹ năng</a></li>
+          <li><a href="#projects">Dự án</a></li>
+          <li><a href="#achievements">Thành tích</a></li>
+          <li><a href="#activities">Hoạt động</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Chuyển đổi giao diện" title="Chuyển đổi giao diện">
+            <img id="themeIcon" src="images/dark.png" alt="Chế độ tối" width="20" height="20" />
+          </button>
+          <button class="settings-btn" id="settingsBtn" aria-label="Cài đặt">⚙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left reveal">
+        <p class="hero-greeting">Xin chào, tôi là</p>
+        <h1 class="hero-name">Nguyễn Chí Tâm</h1>
+        <p class="hero-role"><span id="dynamicRole">Web Developer</span></p>
+
+        <p class="hero-intro">
+          Không chỉ là viết code, tôi tập trung vào việc kiến tạo những hệ sinh thái số bền vững và mang lại giá trị
+          thực cho doanh nghiệp.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn">Xem Dự Án &rarr;</a>
+          <a href="#contact" class="btn btn-outline">Liên Hệ</a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com/NCtom123" class="social-icon" aria-label="GitHub" target="_blank">
+            <img src="images/github.png" alt="GitHub" style="width: 35px; height: 35px;">
+          </a>
+          <a href="https://www.instagram.com/hcis.tamie" class="social-icon" aria-label="Instagram" target="_blank">
+            <img src="images/instagram.png" alt="Instagram" style="width: 35px; height: 35px;">
+          </a>
+          <a href="https://www.facebook.com/chitam2876" class="social-icon" aria-label="Facebook" target="_blank">
+            <img src="images/facebook.png" alt="Facebook" style="width: 35px; height: 35px;">
+          </a>
+          <a href="mailto:nct287206@gmail.com" class="social-icon" aria-label="Email" target="_blank">
+            <img src="images/email.png" alt="Email" style="width: 35px; height: 35px;">
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="avatar-frame">
+          <img src="images/avt.jpg" alt="Nguyễn Chí Tâm" class="avatar-image" />
+          <div class="avatar-ring"></div>
+          <div class="avatar-shadow"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-wrapper">
+        <div class="about-section">
+          <h2 class="section-title reveal">Về bản thân</h2>
+          <p class="reveal">
+            Tôi là một sinh viên Công nghệ Thông tin với niềm đam mê mạnh mẽ trong lĩnh vực lập trình web.
+            Tôi luôn chủ động học hỏi và tìm kiếm cơ hội để áp dụng kiến thức vào các dự án thực tế, từ xây dựng giao
+            diện đến phát triển hệ thống phía máy chủ.
+            Trong quá trình học tập và rèn luyện, tôi đã tích lũy kinh nghiệm làm việc với HTML, CSS, JavaScript, PHP và
+            cơ sở dữ liệu. Tôi hướng đến việc tạo ra những sản phẩm web hiệu quả, tối ưu và mang lại giá trị thực tiễn.
+            Mục tiêu của tôi là trở thành một lập trình viên web chuyên nghiệp, không ngừng phát triển kỹ năng và đóng
+            góp vào các dự án chất lượng cao.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2 class="section-title reveal">Kỹ năng tích lũy qua quá trình học tập</h2>
+          <div class="skills-grid reveal">
+            <div class="skill-column">
+              <h4>Frontend</h4>
+              <ul>
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript (ES6+)</li>
+                <li>React & Vue.js</li>
+                <li>Responsive Design</li>
+              </ul>
+            </div>
+            <div class="skill-column">
+              <h4>Tools & Others</h4>
+              <ul>
+                <li>Git & GitHub</li>
+                <li>UI/UX Design</li>
+                <li>API Integration</li>
+                <li>Web Performance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <h2 class="section-title reveal">Học Vấn</h2>
+          <div class="education-item reveal">
+            <div class="experience-header">
+              <h3>Trường Cao Đẳng FPT Polytechnic cơ sở Đồng Nai</h3>
+              <span class="date">2024 - 2026</span>
+            </div>
+            <p class="company">Bộ môn Công Nghệ Thông Tin</p>
+            <p class="description">
+              Chuyên ngành Lập Trình Web, GPA: 3.69/4.0
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title reveal">Kỹ Năng</h2>
+      <p class="section-subtitle reveal">
+        Kết hợp kỹ thuật và tư duy thiết kế để xây dựng sản phẩm chất lượng.
+      </p>
+      <div class="skill-grid reveal">
+        <article class="skill-card">
+          <h3>Frontend</h3>
+          <p>Thiết kế UI hiện đại, animation mượt mà, responsive đầy đủ.</p>
+          <div class="skill-list">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>React</span>
+            <span>Vue.js</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>Backend & API</h3>
+          <p>Đảm bảo logic bền vững, API an toàn và hiệu năng tốt.</p>
+          <div class="skill-list">
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>REST API</span>
+            <span>MongoDB</span>
+            <span>Git</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>Tools & Productivity</h3>
+          <p>Quy trình làm việc hiệu quả, version control và testing.</p>
+          <div class="skill-list">
+            <span>GitHub</span>
+            <span>VS Code</span>
+            <span>Figma</span>
+            <span>Postman</span>
+            <span>Docker</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>Kỹ năng mềm</h3>
+          <p>Giao tiếp, teamwork và tư duy giải quyết vấn đề.</p>
+          <div class="skill-list">
+            <span>Làm việc nhóm</span>
+            <span>Quản lý thời gian</span>
+            <span>Giải quyết vấn đề</span>
+            <span>Tiếng Anh</span>
+            <span>Sáng tạo</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title reveal">Dự Án</h2>
+      <p class="section-subtitle reveal">
+        Những dự án tiêu biểu mà tôi đã tham gia
+      </p>
+      <div class="project-grid">
+        <div class="project-card reveal">
+          <div class="project-img-wrapper" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <img src="images/chamcong.png" alt="E-Commerce UI" class="project-img" />
+          </div>
+          <div class="project-info">
+            <h3>ARM – HR & Attendance System</h3>
+            <p>
+              Nền tảng quản lý nhân sự và chấm công giúp theo dõi thời gian làm việc,
+              quản lý ca và tối ưu hiệu suất nhân sự.
+            </p>
+            <div class="tags"><span>PHP</span> <span>MySQL</span> <span>JavaScript</span> <span>Bootstrap</span> </div>
+            <div class="project-links">
+              <a href="https://github.com/diepvien007-nct/nguyen-chi-tam" class="project-btn code-btn" target="_blank"
+                rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+              <a href="https://codewithme.id.vn" class="project-btn demo-btn" target="_blank"
+                rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img-wrapper" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <img src="images/watchshop.png" alt="Social Media Dashboard" class="project-img" />
+          </div>
+          <div class="project-info">
+            <h3>TWC – Timeless Watch Collection</h3>
+            <p>
+              Bộ sưu tập đồng hồ thanh lịch, thiết kế tinh xảo dành cho mọi phong cách.
+            </p>
+            <div class="tags">
+              <span>PHP</span> <span>Bootstrap</span> <span>MySQL</span> <span>JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/diepvien007-nct/nguyen-chi-tam" class="project-btn code-btn" target="_blank"
+                rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+              <a href="https://watchshop.kesug.com/" class="project-btn demo-btn" target="_blank"
+                rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="achievements">
+    <div class="container">
+      <h2 class="section-title reveal">Thành Tích</h2>
+      <div class="stats-grid">
+        <div class="stat-box reveal">
+          <h3>GPA: 3.69/4</h3>
+          <p>Điểm trung bình học tập</p>
+        </div>
+        <div class="stat-box reveal">
+          <h3>4 Kỳ</h3>
+          <p>Liên tiếp đạt danh hiệu Sinh viên giỏi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="activities" class="activities">
+    <div class="container">
+      <h2 class="section-title reveal">Hoạt Động</h2>
+      <div class="activities-grid reveal">
+        <div class="activities-card activities-card--study">
+          <h3>Học tập</h3>
+          <ul class="study-highlights">
+            <li><strong>4 kỳ liên tiếp</strong> Đạt danh hiệu Sinh viên giỏi.</li>
+            <li><strong>GPA: 3.69/4</strong> Duy trì GPA cao và thái độ học tập tốt.</li>  
+          </ul>
+          <p class="duration">09/2024 - 12/2025</p>
+        </div>
+        <div class="activities-card">
+          <h3>Hoạt động xã hội</h3>
+          <p><strong>Dự án thiện nguyện</strong></p>
+          <p class="project-name"><strong>Hành Trình Yêu Thương</strong></p>
+          <p class="volunteer-location"><strong>Tình nguyện tại Trung tâm bảo trợ trẻ em Tam Bình</strong></p>
+          <div class="volunteer-gallery">
+            <h5>Gieo Mầm Hy Vọng</h5>
+            <div class="slider">
+              <button class="slider-btn slider-btn--prev" id="sliderPrev" aria-label="Trước">‹</button>
+              <div class="slider-track-wrapper">
+                <div class="slider-track" id="sliderTrack">
+                  <img class="slider-item" src="images/a1.jpg" alt="Tình nguyện 1" data-full="images/a1.jpg" />
+                  <img class="slider-item" src="images/a2.jpg" alt="Tình nguyện 2" data-full="images/a2.jpg" />
+                  <img class="slider-item" src="images/a3.jpg" alt="Tình nguyện 3" data-full="images/a3.jpg" />
+                  <img class="slider-item" src="images/a4.jpg" alt="Tình nguyện 4" data-full="images/a4.jpg" />
+                  <img class="slider-item" src="images/a5.jpg" alt="Tình nguyện 5" data-full="images/a5.jpg" />
+                  <img class="slider-item" src="images/a6.jpg" alt="Tình nguyện 6" data-full="images/a6.jpg" />
+                </div>
+              </div>
+              <button class="slider-btn slider-btn--next" id="sliderNext" aria-label="Tiếp">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="imageModal" aria-modal="true" role="dialog">
+    <button class="modal-nav-btn modal-prev" id="modalPrev" aria-label="Ảnh trước">‹</button>
+    <div class="close-btn" id="closeImageModal" aria-label="Đóng ảnh">×</div>
+    <img id="modalImage" src="" alt="Ảnh hoạt động thiện nguyện" />
+    <button class="modal-nav-btn modal-next" id="modalNext" aria-label="Ảnh sau">›</button>
+  </div>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title reveal">Liên hệ</h2>
+      <div class="contact-content">
+        <div class="contact-info reveal">
+          <h3 class="contact-title">Thông Tin Liên Hệ</h3>
+          <p>
+            Tôi luôn sẵn sàng lắng nghe những ý tưởng mới và cơ hội hợp tác.
+            Nếu bạn có dự án hay câu hỏi, đừng ngần ngại liên hệ!
+          </p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="icon">✉</span>
+              <div>
+                <p class="label">Email</p>
+                <a href="mailto:nct287206@gmail.com">nct287206@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">📞</span>
+              <div>
+                <p class="label">Điện thoại</p>
+                <a href="tel:0931248796">+84 093 124 8796</a><br />
+                <a href="tel:0965402765">+84 096 540 2765</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">📍</span>
+              <div>
+                <p class="label">Địa chỉ</p>
+                <p>Hưng Thịnh, Đồng Nai, Việt Nam</p>
+                <p>Trấn Biên, Đồng Nai, Việt Nam</p>
+              </div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/NCtom123" class="social-icon" aria-label="GitHub" target="_blank">
+              <img src="images/github.png" alt="GitHub" />
+            </a>
+            <a href="https://www.instagram.com/hcis.tamie" class="social-icon" aria-label="Instagram" target="_blank">
+              <img src="images/instagram.png" alt="Instagram" />
+            </a>
+            <a href="https://www.facebook.com/chitam2876" class="social-icon" aria-label="Facebook" target="_blank">
+              <img src="images/facebook.png" alt="Facebook" />
+            </a>
+            <a href="mailto:nct287206@gmail.com" class="social-icon" aria-label="Email" target="_blank">
+              <img src="images/email.png" alt="Email" />
+            </a>
+          </div>
+        </div>
+        <form class="contact-form reveal">
+          <div class="form-group">
+            <label for="name">Họ và tên</label>
+            <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Nội dung</label>
+            <textarea id="message" name="message" placeholder="Bạn muốn nhắn gì với tôi?" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Gửi Tin Nhắn</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>
+        &copy; 28/07/2006 Portfolio. Coding with a systems mindset, designing with a creative heart. | Web Developer
+        <span class="highlight">Nguyễn Chí Tâm</span>
+      </p>
+    </div>
+  </footer>
+
+  <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Lên đầu trang" title="Lên đầu trang">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
