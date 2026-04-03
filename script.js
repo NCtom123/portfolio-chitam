@@ -100,16 +100,25 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
     document.querySelectorAll(".nav-links a").forEach((a) => a.classList.remove("active"));
     this.classList.add("active");
     // close mobile nav
-    document.getElementById("navRight").classList.remove("open");
+    closeMobileMenu();
   });
 });
 
 // Mobile menu toggle
 const menuToggle = document.getElementById("menuToggle");
+const menuClose = document.getElementById("menuClose");
 const navRight = document.getElementById("navRight");
-menuToggle.addEventListener("click", () => {
+
+const toggleMobileMenu = () => {
   navRight.classList.toggle("open");
-});
+};
+
+const closeMobileMenu = () => {
+  navRight.classList.remove("open");
+};
+
+menuToggle.addEventListener("click", toggleMobileMenu);
+menuClose.addEventListener("click", closeMobileMenu);
 
 // Setting button mock action
 const settingsBtn = document.getElementById("settingsBtn");
