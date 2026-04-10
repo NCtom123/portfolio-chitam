@@ -2516,10 +2516,11 @@ body.light-mode .footer {
 
   .logo {
     font-size: 1.1rem;
+    text-align: center;
   }
 
   .logo span {
-    display: none;
+    display: inline;
   }
 
   /* Hero Section */
