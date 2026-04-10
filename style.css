@@ -308,8 +308,8 @@ body.light-mode .theme-toggle {
     font-size: 1.2rem;
     margin: 0;
     order: 2;
-    flex: 1;
-    text-align: center;
+    flex: none;
+    text-align: left;
   }
 
   .nav-menu {
@@ -2166,10 +2166,6 @@ body.light-mode .footer {
     padding: 0.8rem 0;
   }
 
-  .logo {
-    font-size: 1.2rem;
-  }
-
   .nav-links {
     gap: 1.5rem;
   }
@@ -2177,10 +2173,6 @@ body.light-mode .footer {
   .theme-toggle {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
-  }
-
-  .menu-toggle {
-    display: flex !important;
   }
 
   /* Hero Section */
@@ -2514,22 +2506,14 @@ body.light-mode .footer {
     padding: 0 1.2rem;
   }
 
-  .navbar-container {
-    justify-content: flex-start;
-    gap: 0.5rem;
-  }
-
   .menu-toggle {
-    display: flex !important;
-    order: 2;
+    order: 1;
   }
 
   .logo {
-    font-size: 1.1rem;
-    text-align: left;
+    font-size: 1rem;
     margin: 0;
-    flex: none;
-    order: 1;
+    order: 2;
   }
 
   .logo span {
