@@ -1,0 +1,11 @@
+﻿# Nested duplicate folder
+portfolio-chitam-main/
+*.backup.*
+*.tmp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node dependencies
+node_modules/
