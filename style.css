@@ -4680,6 +4680,13 @@ body.light-mode .scroll-to-top {
   box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35);
 }
 
+.scroll-to-top i {
+  color: #ffffff !important;
+  font-size: 1.25rem !important;
+  line-height: 1 !important;
+  display: inline-block;
+}
+
 .scroll-to-top.show {
   opacity: 1;
   visibility: visible;

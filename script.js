@@ -1013,10 +1013,25 @@ document.addEventListener("DOMContentLoaded", () => {
   let startX = 0, startY = 0;
   let initLeft = 0, initTop = 0;
 
-  // Ensure default position (bottom-right) on page load / reset
+  // Ensure default position (bottom-right) on every page load / reload / reset
   try {
     sessionStorage.removeItem("tamAiBtnPos");
+    localStorage.removeItem("tamAiBtnPos");
   } catch (e) {}
+
+  if (aiToggleWrapper) {
+    aiToggleWrapper.style.removeProperty("left");
+    aiToggleWrapper.style.removeProperty("top");
+    aiToggleWrapper.style.bottom = "25px";
+    aiToggleWrapper.style.right = "25px";
+  }
+
+  window.addEventListener("beforeunload", () => {
+    try {
+      sessionStorage.removeItem("tamAiBtnPos");
+      localStorage.removeItem("tamAiBtnPos");
+    } catch (e) {}
+  });
 
   const onDragStart = (e) => {
     if (e.type === "mousedown" && e.button !== 0) return;

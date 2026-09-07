@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20260907.4" />
 </head>
 
 <body>
@@ -739,7 +739,7 @@
 
   <!-- Floating Elements: Scroll To Top & Toast Notification -->
   <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Về trang đầu" title="Về trang đầu">
-    <i class="fas fa-arrow-up"></i>
+    <i class="bi bi-arrow-up"></i>
   </button>
 
   <!-- Draggable AI Chatbot Floating Trigger -->
@@ -876,8 +876,25 @@
     <div class="toast-message" id="toastMessage">Tin nhắn đã được gửi thành công!</div>
   </div>
 
+  <!-- Immediate Position Reset (Guarantees Chatbot Always Starts at Default Bottom-Right) -->
+  <script>
+    try {
+      sessionStorage.removeItem("tamAiBtnPos");
+      localStorage.removeItem("tamAiBtnPos");
+    } catch (e) {}
+    (function () {
+      var wrapper = document.getElementById("aiChatToggleWrapper");
+      if (wrapper) {
+        wrapper.style.removeProperty("left");
+        wrapper.style.removeProperty("top");
+        wrapper.style.bottom = "25px";
+        wrapper.style.right = "25px";
+      }
+    })();
+  </script>
+
   <!-- Main JavaScript File -->
-  <script src="script.js"></script>
+  <script src="script.js?v=20260907.4"></script>
 </body>
 
 </html>
