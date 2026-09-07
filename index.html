@@ -32,8 +32,16 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
+  <!-- Force Always Scroll to Top on Load / Reload -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=20260907.4" />
+  <link rel="stylesheet" href="style.css?v=20260907.5" />
 </head>
 
 <body>
@@ -876,12 +884,19 @@
     <div class="toast-message" id="toastMessage">Tin nhắn đã được gửi thành công!</div>
   </div>
 
-  <!-- Immediate Position Reset (Guarantees Chatbot Always Starts at Default Bottom-Right) -->
+  <!-- Immediate Position & Scroll Reset (Always Jump to Top on Reload) -->
   <script>
     try {
       sessionStorage.removeItem("tamAiBtnPos");
       localStorage.removeItem("tamAiBtnPos");
     } catch (e) {}
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (window.location.hash) {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
     (function () {
       var wrapper = document.getElementById("aiChatToggleWrapper");
       if (wrapper) {
@@ -894,7 +909,7 @@
   </script>
 
   <!-- Main JavaScript File -->
-  <script src="script.js?v=20260907.4"></script>
+  <script src="script.js?v=20260907.5"></script>
 </body>
 
 </html>

@@ -3,6 +3,23 @@
 // ==========================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Always scroll to top on load/reload & disable browser scroll restoration
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname + window.location.search);
+  }
+  window.scrollTo(0, 0);
+
+  window.addEventListener("beforeunload", () => {
+    window.scrollTo(0, 0);
+  });
+
+  window.addEventListener("load", () => {
+    setTimeout(() => window.scrollTo(0, 0), 10);
+  });
+
   // ------------------------------------------------------------------------
   // 1. NAVBAR SCROLL EFFECT & MOBILE MENU
   // ------------------------------------------------------------------------
@@ -28,13 +45,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuToggle?.addEventListener("click", toggleMobileMenu);
 
-  // Nav-links click active & close mobile nav
+  // Nav-links & Anchor smooth scroll without leaving URL hash
   const navLinks = document.querySelectorAll(".nav-links a");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
-      navLinks.forEach((a) => a.classList.remove("active"));
-      this.classList.add("active");
-      closeMobileMenu();
+  const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
+
+  allAnchorLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href");
+      if (!targetId || targetId === "#") return;
+      const targetElem = document.querySelector(targetId);
+      if (targetElem) {
+        e.preventDefault();
+        const navHeight = navbar?.offsetHeight || 70;
+        const targetPos = targetElem.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        window.scrollTo({ top: Math.max(0, targetPos), behavior: "smooth" });
+        if (this.closest(".nav-links")) {
+          navLinks.forEach((a) => a.classList.remove("active"));
+          this.classList.add("active");
+        }
+        closeMobileMenu();
+      }
     });
   });
 
