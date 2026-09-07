@@ -1028,12 +1028,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const getApiKey = () => localStorage.getItem(STORAGE_KEY) || "";
 
-  // Supported Gemini models fallback list
+  // Supported Gemini models list (active and supported)
   const GEMINI_MODELS = [
-    "gemini-2.5-flash",
-    "gemini-flash-latest",
-    "gemini-1.5-flash",
-    "gemini-pro-latest"
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.5-flash",
+    "gemini-3.1-flash-lite",
+    "gemini-2.5-flash-lite",
+    "gemini-flash-latest"
   ];
 
   let chatHistory = [];
@@ -1363,10 +1365,42 @@ DUAL CAPABILITIES:
         : "Bạn có thể liên hệ trực tiếp với Nguyễn Chí Tâm qua:\n- **Điện thoại / Zalo**: 0931248796 (Nhắn Zalo ngay: [zalo.me/0931248796](https://zalo.me/0931248796))\n- **Email**: nct287206@gmail.com\n- **Địa chỉ**: Quảng Đà, Hưng Thịnh, Đồng Nai\n- **GitHub**: github.com/NChiTam287\n\n[ACTION:OPEN_CONTACT]";
     }
 
+    // Programming jokes & humor
+    if (q.includes("chuyện vui") || q.includes("joke") || q.includes("hài") || q.includes("cười") || q.includes("vui vẻ") || q.includes("kể chuyện")) {
+      const jokes = isEn
+        ? [
+            "Why do programmers prefer dark mode?\nBecause light attracts bugs! 🐛✨",
+            "A programmer's wife tells him: 'Go to the supermarket and get a loaf of bread. If they have eggs, buy 10.'\nHe comes back with 10 loaves of bread.\nWife: 'Why 10 loaves?!'\nProgrammer: 'Because they had eggs!' 😂",
+            "There are 10 types of people in the world: those who understand binary, and those who don't. 😄",
+            "Doctor: 'You have severe sleep deprivation.'\nProgrammer: 'Don't worry, I just finished fixing the sleep bug in my brain, pushing to production now!' 🚀"
+          ]
+        : [
+            "Cô vợ bảo anh chồng lập trình viên:\n– *'Anh ra siêu thị mua giúp em một ổ bánh mì. À, nếu ở đó có trứng thì mua 10 nhé!'*\nMột lát sau, anh chồng mang về đúng... **10 ổ bánh mì**.\nCô vợ hốt hoảng: *'Sao mua tận 10 ổ bánh mì?!'*\nAnh chồng tỉnh bơ: *'Thì tại ở siêu thị họ... có bán trứng mà!'* 😂\n*(Đúng chuẩn tư duy câu lệnh If-Else của dân coder!)*",
+            "Tại sao lập trình viên luôn trung thành với giao diện nền tối (Dark Mode)?\nBởi vì ánh sáng sẽ thu hút... **bọ (bugs)**! 🐛✨",
+            "Trên đời này chỉ có **10 loại người**:\nMột loại là những người hiểu hệ nhị phân (binary), và loại còn lại là những người không hiểu! 😄",
+            "Bác sĩ khám bệnh bảo lập trình viên:\n– *'Anh bị thiếu ngủ trầm trọng rồi đấy!'*\nLập trình viên tươi cười:\n– *'Không sao bác sĩ ơi, em vừa commit xong code fix lỗi ngủ, để em merge vào nhánh chính rồi ngủ bù sau!'* 🚀"
+          ];
+      return jokes[Math.floor(Math.random() * jokes.length)];
+    }
+
+    // Gratitude & Compliments
+    if (q.includes("cảm ơn") || q.includes("thank") || q.includes("tuyệt") || q.includes("giỏi") || q.includes("hay quá") || q.includes("good")) {
+      return isEn
+        ? "You're very welcome! I'm always happy to help. Feel free to ask more questions about Tam or anything tech-related! 😊"
+        : "Rất vui được hỗ trợ bạn! Nếu bạn cần thêm thông tin gì về Tâm hoặc muốn cùng nhau đàm đạo công nghệ thì cứ thoải mái nhắn cho mình nhé! 😊";
+    }
+
+    // Identity & Creation
+    if (q.includes("bạn là ai") || q.includes("who are you") || q.includes("tên gì") || q.includes("what is your name")) {
+      return isEn
+        ? "I am **Tam AI**, Nguyen Chi Tam's virtual representative and friendly companion. I'm powered by Google Gemini generative intelligence to represent Tam 24/7!"
+        : "Mình là **Tam AI**, trợ lý số và người bạn đồng hành của Nguyễn Chí Tâm. Mình được tích hợp trí tuệ nhân tạo Google Gemini để đại diện cho Tâm hỗ trợ nhà tuyển dụng và bạn bè 24/7!";
+    }
+
     // Casual chat
     return isEn
-      ? "Hi there! I'm Tam AI, Nguyen Chi Tam's digital assistant. I can answer anything about Tam's projects, tech stack, GPA, or we can just chat like friends about web dev, technology, and life! What's on your mind today?"
-      : "Chào bạn! Mình là Tam AI, trợ lý ảo và người bạn đồng hành của Nguyễn Chí Tâm. Bạn có thể hỏi mình về các dự án, kỹ năng, điểm số GPA của Tâm, hoặc chúng mình có thể tán gẫu, tâm sự về lập trình và cuộc sống nha! Hôm nay bạn thế nào?";
+      ? "I'm always here to chat! Feel free to ask about Tam's projects (Restaurant ERP, ARM, TWC), Full-Stack skills, GPA, or just have a fun conversation about web development and life. What would you like to explore?"
+      : "Mình luôn sẵn sàng trò chuyện cùng bạn! Đừng ngần ngại hỏi về các đồ án tiêu biểu của Tâm (Restaurant ERP AI, ARM, TWC), kỹ năng lập trình Full-Stack, điểm số GPA 3.65, hoặc cùng tâm sự chuyện nghề IT nhé. Bạn muốn tìm hiểu gì trước nè?";
   };
 
   // Send message to Gemini API with fallback
