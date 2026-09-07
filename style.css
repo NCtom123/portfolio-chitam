@@ -4393,6 +4393,28 @@ body.light-mode .item-phone .val-link:hover {
   color: var(--text-dim);
 }
 
+.zalo-btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(0, 104, 255, 0.12);
+  color: #0084ff !important;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.88rem !important;
+  font-weight: 600;
+  border: 1px solid rgba(0, 104, 255, 0.35);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.zalo-btn-link:hover {
+  background: #0068ff !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 104, 255, 0.4);
+}
+
 /* Contact Social Section inside Left Card */
 .contact-social-section {
   padding-top: 1.4rem;

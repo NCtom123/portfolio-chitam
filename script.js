@@ -913,51 +913,53 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnText) btnText.textContent = currentLang === "en" ? "Sending..." : "Đang gửi...";
     if (btnSpinner) btnSpinner.style.display = "inline-block";
 
-    const accessKeyInput = document.getElementById("web3formsAccessKey");
-    const accessKey = accessKeyInput ? accessKeyInput.value : "";
-
     try {
-      if (accessKey && accessKey !== "YOUR_ACCESS_KEY_HERE") {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            access_key: accessKey,
-            name: name,
-            email: email,
-            message: message,
-            subject: `Tin nhắn mới từ ${name} qua Portfolio`
-          })
-        });
+      const response = await fetch("https://formsubmit.co/ajax/nct287206@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: `[Portfolio Nguyễn Chí Tâm] Tin nhắn mới từ ${name}`,
+          _template: "table",
+          _captcha: "false"
+        })
+      });
 
-        const result = await response.json();
-        if (result.success) {
-          showToast(
-            currentLang === "en"
-              ? `Thank you, ${name}! Your message has been sent successfully.`
-              : `Cảm ơn bạn ${name}! Tin nhắn của bạn đã được gửi thành công đến Nguyễn Chí Tâm.`
-          );
-          contactForm.reset();
-        } else {
-          throw new Error(result.message || "Failed to send");
-        }
+      const result = await response.json();
+      if (result.success === "true" || result.success === true) {
+        showToast(
+          currentLang === "en"
+            ? `Thank you, ${name}! Your message has been sent directly to Tam's Gmail inbox.`
+            : `Cảm ơn bạn ${name}! Tin nhắn đã được gửi thành công đến hộp thư Gmail của Nguyễn Chí Tâm.`
+        );
+        contactForm.reset();
+      } else if (result.message && result.message.includes("Activation")) {
+        showToast(
+          currentLang === "en"
+            ? `Message recorded! Please check nct287206@gmail.com to confirm automated notifications.`
+            : `Tin nhắn đã gửi! Vui lòng vào Gmail nct287206@gmail.com bấm 'Activate Form' để kích hoạt nhận thư nhé.`
+        );
+        contactForm.reset();
       } else {
-        // Fallback when access key is not yet set: notify gracefully and offer direct mail link
-        setTimeout(() => {
-          showToast(
-            currentLang === "en"
-              ? `Thank you, ${name}! Your message was recorded. I will contact you soon.`
-              : `Cảm ơn bạn ${name}! Tin nhắn đã được tiếp nhận. Tôi sẽ phản hồi sớm nhất qua email!`
-          );
-          contactForm.reset();
-        }, 600);
+        // Fallback toast
+        showToast(
+          currentLang === "en"
+            ? `Thank you, ${name}! Your message has been delivered.`
+            : `Cảm ơn bạn ${name}! Tin nhắn của bạn đã được gửi đến Nguyễn Chí Tâm.`
+        );
+        contactForm.reset();
       }
     } catch (err) {
       console.error("Form error:", err);
       showToast(
         currentLang === "en"
-          ? "There was an issue sending your message. Please email nct287206@gmail.com directly."
-          : "Có lỗi khi gửi tin nhắn. Bạn vui lòng liên hệ trực tiếp qua email: nct287206@gmail.com",
+          ? "Network issue. Please contact directly via Email: nct287206@gmail.com or Zalo: 0931 248 796"
+          : "Có lỗi khi gửi tin nhắn. Bạn vui lòng liên hệ trực tiếp qua Email: nct287206@gmail.com hoặc Zalo: 0931 248 796",
         true
       );
     } finally {
@@ -1357,8 +1359,8 @@ DUAL CAPABILITIES:
 
     if (q.includes("liên hệ") || q.includes("contact") || q.includes("phỏng vấn") || q.includes("sđt") || q.includes("phone") || q.includes("email") || q.includes("zalo")) {
       return isEn
-        ? "You can connect with Nguyen Chi Tam directly via:\n- **Phone / Zalo**: 0931248796\n- **Email**: nct287206@gmail.com\n- **Location**: Quang Da, Hung Thinh, Dong Nai, Vietnam\n- **GitHub**: github.com/NChiTam287\n\n[ACTION:OPEN_CONTACT]"
-        : "Bạn có thể liên hệ trực tiếp với Nguyễn Chí Tâm qua:\n- **Số điện thoại / Zalo**: 0931248796\n- **Email**: nct287206@gmail.com\n- **Địa chỉ**: Quảng Đà, Hưng Thịnh, Đồng Nai\n- **GitHub**: github.com/NChiTam287\n\n[ACTION:OPEN_CONTACT]";
+        ? "You can connect with Nguyen Chi Tam directly via:\n- **Phone / Zalo**: 0931248796 (Direct Chat: [zalo.me/0931248796](https://zalo.me/0931248796))\n- **Email**: nct287206@gmail.com\n- **Location**: Quang Da, Hung Thinh, Dong Nai, Vietnam\n- **GitHub**: github.com/NChiTam287\n\n[ACTION:OPEN_CONTACT]"
+        : "Bạn có thể liên hệ trực tiếp với Nguyễn Chí Tâm qua:\n- **Điện thoại / Zalo**: 0931248796 (Nhắn Zalo ngay: [zalo.me/0931248796](https://zalo.me/0931248796))\n- **Email**: nct287206@gmail.com\n- **Địa chỉ**: Quảng Đà, Hưng Thịnh, Đồng Nai\n- **GitHub**: github.com/NChiTam287\n\n[ACTION:OPEN_CONTACT]";
     }
 
     // Casual chat

@@ -16,8 +16,8 @@
   <meta property="og:description" content="Khám phá các dự án, kỹ năng lập trình web và hồ sơ năng lực của Nguyễn Chí Tâm." />
   <meta property="og:image" content="images/avt.jpg" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="images/avt.jpg" />
+  <!-- Favicon (Removed image per user request to only display text title) -->
+  <link rel="icon" href="data:," />
 
   <!-- Google Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
   </script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=20260907.5" />
+  <link rel="stylesheet" href="style.css?v=20260907.6" />
 </head>
 
 <body>
@@ -106,6 +106,9 @@
           </a>
           <a href="mailto:nct287206@gmail.com" class="social-icon" aria-label="Email" target="_blank" data-tooltip="Email">
             <img src="images/email.png" alt="Email" />
+          </a>
+          <a href="https://zalo.me/0931248796" class="social-icon" aria-label="Zalo" target="_blank" rel="noopener noreferrer" data-tooltip="Zalo (0931 248 796)">
+            <img src="images/zalo.svg" alt="Zalo" />
           </a>
           <!-- CV Icon Button -->
           <button type="button" class="social-icon cv-trigger-btn" aria-label="Xem CV" data-tooltip="Xem CV" title="Xem CV">
@@ -663,7 +666,7 @@
                 <div class="phone-group">
                   <a href="tel:0931248796" class="val-link">+84 093 124 8796</a>
                   <span class="dot-sep">&bull;</span>
-                  <a href="tel:0965402765" class="val-link">+84 096 540 2765</a>
+                  <a href="https://zalo.me/0931248796" target="_blank" rel="noopener noreferrer" class="val-link zalo-btn-link" title="Nhắn tin Zalo trực tiếp cho Tâm"><i class="bi bi-chat-dots-fill"></i> Nhắn Zalo</a>
                 </div>
               </div>
             </div>
@@ -693,6 +696,9 @@
               <a href="mailto:nct287206@gmail.com" class="social-icon" aria-label="Email" target="_blank" data-tooltip="Email">
                 <img src="images/email.png" alt="Email" />
               </a>
+              <a href="https://zalo.me/0931248796" class="social-icon" aria-label="Zalo" target="_blank" rel="noopener noreferrer" data-tooltip="Zalo (0931 248 796)">
+                <img src="images/zalo.svg" alt="Zalo" />
+              </a>
               <button type="button" class="social-icon cv-trigger-btn" aria-label="Xem CV" data-tooltip="Xem CV" title="Xem CV">
                 <img src="images/cv.svg" alt="Xem CV" />
               </button>
@@ -700,17 +706,17 @@
           </div>
         </div>
 
-        <!-- Right Card: Contact Form -->
-        <form class="contact-form reveal" id="contactForm" method="POST">
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" id="web3formsAccessKey" />
-          <input type="hidden" name="subject" value="Tin nhắn liên hệ mới từ Portfolio Nguyễn Chí Tâm" />
-          <input type="hidden" name="from_name" value="Portfolio Website" />
+        <!-- Right Card: Contact Form (Live FormSubmit to nct287206@gmail.com) -->
+        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/nct287206@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="[Portfolio Nguyễn Chí Tâm] Tin nhắn liên hệ mới từ khách truy cập" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
 
           <div class="form-card-header">
             <div class="form-header-badge"><i class="bi bi-send-fill"></i></div>
             <div>
               <h3 data-i18n="contact.formCardTitle">Gửi Tin Nhắn Nhanh</h3>
-              <p data-i18n="contact.formCardSub">Phản hồi nhanh chóng trong vòng 24 giờ</p>
+              <p data-i18n="contact.formCardSub">Gửi trực tiếp đến hộp thư Gmail của Tâm</p>
             </div>
           </div>
 
@@ -720,15 +726,15 @@
           </div>
           <div class="form-group">
             <label for="email"><i class="bi bi-envelope-fill"></i> <span data-i18n="contact.formEmail">Email</span></label>
-            <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required />
+            <input type="email" id="email" name="email" placeholder="Nhập email của bạn để Tâm phản hồi" required />
           </div>
           <div class="form-group">
             <label for="message"><i class="bi bi-chat-text-fill"></i> <span data-i18n="contact.formMsg">Nội dung</span></label>
-            <textarea id="message" name="message" placeholder="Bạn muốn nhắn gì với tôi?" rows="5" required></textarea>
+            <textarea id="message" name="message" placeholder="Bạn muốn trao đổi cơ hội công việc hoặc hợp tác gì với Tâm?" rows="5" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary" id="contactSubmitBtn">
             <span class="btn-text"><i class="bi bi-send-fill"></i> <span data-i18n="contact.formBtn">Gửi Tin Nhắn</span></span>
-            <span class="btn-spinner" style="display: none;"><i class="bi bi-arrow-repeat spin"></i></span>
+            <span class="btn-spinner" style="display: none;"><i class="bi bi-arrow-repeat spin"></i> Đang gửi...</span>
           </button>
         </form>
       </div>
@@ -909,7 +915,7 @@
   </script>
 
   <!-- Main JavaScript File -->
-  <script src="script.js?v=20260907.5"></script>
+  <script src="script.js?v=20260907.6"></script>
 </body>
 
 </html>
