@@ -824,9 +824,6 @@
         </div>
       </div>
       <div class="ai-header-actions">
-        <button id="aiSettingsBtn" class="ai-action-btn" title="Cài đặt khóa API Gemini" aria-label="Cài đặt API">
-          <i class="bi bi-gear-fill"></i>
-        </button>
         <button id="aiClearBtn" class="ai-action-btn" title="Xóa lịch sử trò chuyện" aria-label="Xóa chat">
           <i class="bi bi-arrow-counterclockwise"></i>
         </button>
@@ -862,27 +859,6 @@
       </button>
     </form>
 
-    <!-- Settings Modal for Gemini API Key -->
-    <div id="aiSettingsModal" class="ai-settings-modal" style="display: none;">
-      <div class="ai-settings-card">
-        <div class="ai-settings-header">
-          <h4><i class="bi bi-key-fill"></i> <span data-i18n="ai.settingsTitle">Cấu hình Gemini API</span></h4>
-          <button id="closeAiSettingsBtn" class="ai-action-btn" aria-label="Đóng cài đặt">&times;</button>
-        </div>
-        <p class="ai-settings-desc" data-i18n="ai.settingsDesc">
-          Nhập Google Gemini API Key để mở khóa khả năng trò chuyện tự do không giới hạn. Khóa được lưu an toàn trong trình duyệt của bạn (Local Storage) và không bao giờ gửi đi nơi khác.
-        </p>
-        <div class="ai-settings-input-group">
-          <input type="password" id="aiApiKeyInput" class="ai-api-input" placeholder="Dán khóa API của bạn tại đây (AIzaSy... hoặc AQ...)" />
-          <button type="button" id="aiToggleKeyVisibility" class="btn-toggle-vis" title="Hiện/ẩn khóa"><i class="bi bi-eye"></i></button>
-        </div>
-        <div class="ai-settings-actions">
-          <button type="button" id="aiSaveKeyBtn" class="btn btn-sm btn-primary"><i class="bi bi-check-lg"></i> <span data-i18n="ai.saveKey">Lưu khóa</span></button>
-          <button type="button" id="aiRemoveKeyBtn" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> <span data-i18n="ai.removeKey">Xóa khóa</span></button>
-        </div>
-        <div class="ai-settings-status" id="aiKeyStatus"></div>
-      </div>
-    </div>
   </div>
 
   <div id="toastNotification" class="toast-notification" role="status" aria-live="polite">
@@ -915,7 +891,7 @@
   </script>
 
   <!-- Main JavaScript File -->
-  <script src="script.js?v=20260907.9"></script>
+  <script src="script.js?v=20260907.10"></script>
 </body>
 
 </html>

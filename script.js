@@ -1026,12 +1026,8 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
   const STORAGE_KEY = "tam_gemini_api_key";
   
-  // Initialize stored key with default key if not yet set
-  if (!localStorage.getItem(STORAGE_KEY) && DEFAULT_KEY) {
-    localStorage.setItem(STORAGE_KEY, DEFAULT_KEY);
-  }
-
-  const getApiKey = () => localStorage.getItem(STORAGE_KEY) || "";
+  // Always use embedded default API key (fallback to DEFAULT_KEY if localStorage is empty)
+  const getApiKey = () => localStorage.getItem(STORAGE_KEY) || DEFAULT_KEY || "";
 
   // Supported Gemini models list (active and supported)
   const GEMINI_MODELS = [
@@ -1564,58 +1560,6 @@ DUAL CAPABILITIES:
     initWelcomeMessage();
   });
 
-  // Settings Modal (Gemini API Key)
-  aiSettingsBtn?.addEventListener("click", () => {
-    if (aiSettingsModal) {
-      aiSettingsModal.style.display = "flex";
-      if (aiApiKeyInput) {
-        aiApiKeyInput.value = getApiKey();
-      }
-      if (aiKeyStatus) {
-        aiKeyStatus.textContent = getApiKey()
-          ? (currentLang === "en" ? "✓ API Key configured (Active)" : "✓ Đã có khóa API (Đang hoạt động)")
-          : (currentLang === "en" ? "Using Smart Embedded Engine" : "Đang dùng Bộ não AI tích hợp sẵn");
-        aiKeyStatus.style.color = getApiKey() ? "#10b981" : "#94a3b8";
-      }
-    }
-  });
-
-  closeAiSettingsBtn?.addEventListener("click", () => {
-    if (aiSettingsModal) aiSettingsModal.style.display = "none";
-  });
-
-  aiToggleKeyVisibility?.addEventListener("click", () => {
-    if (!aiApiKeyInput) return;
-    const isPass = aiApiKeyInput.type === "password";
-    aiApiKeyInput.type = isPass ? "text" : "password";
-    aiToggleKeyVisibility.innerHTML = isPass ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
-  });
-
-  aiSaveKeyBtn?.addEventListener("click", () => {
-    const val = aiApiKeyInput?.value.trim() || "";
-    if (val) {
-      localStorage.setItem(STORAGE_KEY, val);
-      if (aiKeyStatus) {
-        aiKeyStatus.textContent = currentLang === "en" ? "✓ Key saved successfully!" : "✓ Đã lưu khóa thành công!";
-        aiKeyStatus.style.color = "#10b981";
-      }
-      if (aiEngineBadge) aiEngineBadge.textContent = "Gemini Live";
-      setTimeout(() => {
-        if (aiSettingsModal) aiSettingsModal.style.display = "none";
-      }, 700);
-    }
-  });
-
-  aiRemoveKeyBtn?.addEventListener("click", () => {
-    localStorage.removeItem(STORAGE_KEY);
-    if (aiApiKeyInput) aiApiKeyInput.value = "";
-    if (aiKeyStatus) {
-      aiKeyStatus.textContent = currentLang === "en" ? "Key removed. Switched to Embedded Smart Engine." : "Đã xóa khóa. Chuyển sang AI tích hợp sẵn.";
-      aiKeyStatus.style.color = "#f59e0b";
-    }
-    if (aiEngineBadge) aiEngineBadge.textContent = "Smart AI";
-  });
-
   // Global callback for language change in AI Chat
   window.updateAiChatLanguage = (lang) => {
     // 1. Re-render suggestion chips in current language
@@ -1627,10 +1571,6 @@ DUAL CAPABILITIES:
     }
 
     // 3. Update Action Buttons Tooltips & ARIA
-    if (aiSettingsBtn) {
-      aiSettingsBtn.title = lang === "en" ? "Configure Gemini API Key" : "Cài đặt khóa API Gemini";
-      aiSettingsBtn.setAttribute("aria-label", lang === "en" ? "API Settings" : "Cài đặt API");
-    }
     if (aiClearBtn) {
       aiClearBtn.title = lang === "en" ? "Clear conversation history" : "Xóa lịch sử trò chuyện";
       aiClearBtn.setAttribute("aria-label", lang === "en" ? "Clear chat" : "Xóa chat");
