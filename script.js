@@ -381,6 +381,11 @@ document.addEventListener("DOMContentLoaded", () => {
       onLanguageChangeCallback(lang);
     }
 
+    // Update AI Chat widget (Quick Chips, Welcome message if fresh, placeholders, tooltips)
+    if (typeof window.updateAiChatLanguage === "function") {
+      window.updateAiChatLanguage(lang);
+    }
+
     langToggle?.setAttribute("title", lang === "en" ? "Ngôn ngữ: Tiếng Việt (Bấm để chuyển)" : "Language: English (Click to switch)");
     langToggle?.setAttribute("aria-label", lang === "en" ? "Switch to Vietnamese" : "Switch to English");
   };
@@ -1613,9 +1618,37 @@ DUAL CAPABILITIES:
 
   // Global callback for language change in AI Chat
   window.updateAiChatLanguage = (lang) => {
+    // 1. Re-render suggestion chips in current language
     renderQuickChips();
+
+    // 2. Update Input Placeholder
     if (aiChatInput) {
       aiChatInput.placeholder = lang === "en" ? "Ask about Tam or chat casually..." : "Hỏi về Tâm hoặc tâm sự gì đó...";
+    }
+
+    // 3. Update Action Buttons Tooltips & ARIA
+    if (aiSettingsBtn) {
+      aiSettingsBtn.title = lang === "en" ? "Configure Gemini API Key" : "Cài đặt khóa API Gemini";
+      aiSettingsBtn.setAttribute("aria-label", lang === "en" ? "API Settings" : "Cài đặt API");
+    }
+    if (aiClearBtn) {
+      aiClearBtn.title = lang === "en" ? "Clear conversation history" : "Xóa lịch sử trò chuyện";
+      aiClearBtn.setAttribute("aria-label", lang === "en" ? "Clear chat" : "Xóa chat");
+    }
+    if (aiCloseBtn) {
+      aiCloseBtn.title = lang === "en" ? "Minimize chat" : "Thu nhỏ";
+      aiCloseBtn.setAttribute("aria-label", lang === "en" ? "Close chat" : "Đóng chat");
+    }
+
+    // 4. Update Header Subtitle
+    const aiSub = document.querySelector(".ai-header-sub");
+    if (aiSub) {
+      aiSub.textContent = lang === "en" ? "Tam's AI Assistant & Companion" : "Trợ lý ảo & Bạn đồng hành của Tâm";
+    }
+
+    // 5. If conversation is just the initial welcome message, refresh it to the new language
+    if (chatHistory.length === 0) {
+      initWelcomeMessage();
     }
   };
 });
