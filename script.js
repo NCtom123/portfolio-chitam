@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "about.awardText": "5 kỳ liên tiếp SV Giỏi",
       "about.thesisPrefix": "Đồ án tốt nghiệp:",
       "about.thesisTitle": "Xây dựng nền tảng Restaurant ERP tích hợp AI cho quản lý và vận hành nhà hàng",
-      "about.major": "Chuyên ngành Lập Trình Web, GPA: 3.69/4.0 (8.8/10)",
+      "about.major": "Chuyên ngành Lập Trình Web, GPA: 3.65/4.0",
       "skills.title": "Kỹ Năng",
       "skills.subtitle": "Kết hợp kỹ thuật và tư duy thiết kế để xây dựng sản phẩm chất lượng.",
       "skills.frontendDesc": "Thiết kế UI hiện đại, animation mượt mà, responsive đầy đủ.",
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "activities.study": "Học tập",
       "activities.study1": "5 kỳ liên tiếp Đạt danh hiệu Sinh viên giỏi.",
       "activities.study1Sub": "Thành tích học tập xuất sắc toàn diện trong suốt các kỳ chuyên ngành Web.",
-      "activities.study2": "GPA: 3.69/4 Duy trì GPA cao và thái độ học tập tốt.",
+      "activities.study2": "GPA: 3.65/4 Duy trì GPA cao và thái độ học tập tốt.",
       "activities.study2Sub": "Chủ động nghiên cứu công nghệ mới, ứng dụng hiệu quả vào đồ án thực tế.",
       "activities.social": "Hoạt động xã hội",
       "activities.communityChip": "Cộng đồng",
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "about.awardText": "5 consecutive semesters recognized as Excellent Student",
       "about.thesisPrefix": "Graduation Thesis:",
       "about.thesisTitle": "Building an AI-Powered Restaurant ERP Platform for Management & Operations",
-      "about.major": "Web Programming Major, GPA: 3.69/4.0 (8.8/10)",
+      "about.major": "Web Programming Major, GPA: 3.65/4.0",
       "skills.title": "Skills & Stack",
       "skills.subtitle": "Combining technical craftsmanship and design thinking to build impactful products.",
       "skills.frontendDesc": "Modern UI design, fluid animations, and complete responsive layout.",
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "activities.study": "Academics",
       "activities.study1": "5 consecutive semesters recognized as Excellent Student.",
       "activities.study1Sub": "Comprehensive academic excellence across all semesters of Web Development.",
-      "activities.study2": "GPA: 3.69/4.0 maintaining high academic and professional standard.",
+      "activities.study2": "GPA: 3.65/4.0 maintaining high academic and professional standard.",
       "activities.study2Sub": "Proactively researching emerging tech and building high-impact real-world projects.",
       "activities.social": "Community Service",
       "activities.communityChip": "Community",
@@ -1013,23 +1013,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let startX = 0, startY = 0;
   let initLeft = 0, initTop = 0;
 
-  // Restore saved position
-  const savedPos = sessionStorage.getItem("tamAiBtnPos");
-  if (savedPos && aiToggleWrapper) {
-    try {
-      const pos = JSON.parse(savedPos);
-      if (typeof pos.left === "number" && typeof pos.top === "number") {
-        const maxLeft = window.innerWidth - 70;
-        const maxTop = window.innerHeight - 70;
-        const clampedLeft = Math.max(10, Math.min(pos.left, maxLeft));
-        const clampedTop = Math.max(10, Math.min(pos.top, maxTop));
-        aiToggleWrapper.style.left = `${clampedLeft}px`;
-        aiToggleWrapper.style.top = `${clampedTop}px`;
-        aiToggleWrapper.style.bottom = "auto";
-        aiToggleWrapper.style.right = "auto";
-      }
-    } catch (e) {}
-  }
+  // Ensure default position (bottom-right) on page load / reset
+  try {
+    sessionStorage.removeItem("tamAiBtnPos");
+  } catch (e) {}
 
   const onDragStart = (e) => {
     if (e.type === "mousedown" && e.button !== 0) return;
@@ -1093,11 +1080,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.removeEventListener("mouseup", onDragEnd);
     document.removeEventListener("touchmove", onDragMove);
     document.removeEventListener("touchend", onDragEnd);
-
-    if (dragMoved) {
-      const rect = aiToggleWrapper.getBoundingClientRect();
-      sessionStorage.setItem("tamAiBtnPos", JSON.stringify({ left: rect.left, top: rect.top }));
-    }
   };
 
   aiChatToggle?.addEventListener("mousedown", onDragStart);
@@ -1169,7 +1151,7 @@ You are "Tam AI", the warm, witty, intelligent, and friendly virtual assistant a
 DUAL CAPABILITIES:
 1. REPRESENT NGUYEN CHI TAM (WEB DEVELOPER):
 - Personal Profile: Nguyen Chi Tam is an IT / Web Programming student at FPT Polytechnic College - Dong Nai Campus.
-- Academic Excellence: GPA 3.69 / 4.0 (8.8 / 10). Recognized as Excellent Student for 5 consecutive semesters.
+- Academic Excellence: GPA 3.65 / 4.0. Recognized as Excellent Student for 5 consecutive semesters.
 - Key Projects:
   * "Restaurant ERP Platform with AI Assistant" (Capstone Project): Comprehensive ERP for restaurants featuring POS orders, automatic inventory tracking, food expiration alerts, and conversational AI assistant. Tech: PHP, MySQL, RESTful APIs, Bootstrap, Chart.js.
   * "ARM – HR & Attendance Management System": Employee timekeeping, shift scheduling, role-based access control, automated monthly timesheets. Tech: PHP MVC, MySQL, JavaScript, Bootstrap, cPanel.
@@ -1288,8 +1270,8 @@ DUAL CAPABILITIES:
 
     if (q.includes("cv") || q.includes("resume") || q.includes("hồ sơ")) {
       return isEn
-        ? "Nguyen Chi Tam's CV is available in both English and Vietnamese! He has a strong background in Full-Stack Web Development, maintaining a 3.69 GPA at FPT Polytechnic with key projects in PHP, MySQL, and AI integration.\n\n[ACTION:OPEN_CV]"
-        : "CV của Nguyễn Chí Tâm đã được chuẩn hóa cả bản Tiếng Việt và Tiếng Anh! Tâm là sinh viên CNTT FPT Polytechnic với GPA 3.69/4.0, thành thạo PHP, MySQL, React và tích hợp AI.\n\n[ACTION:OPEN_CV]";
+        ? "Nguyen Chi Tam's CV is available in both English and Vietnamese! He has a strong background in Full-Stack Web Development, maintaining a 3.65 GPA at FPT Polytechnic with key projects in PHP, MySQL, and AI integration.\n\n[ACTION:OPEN_CV]"
+        : "CV của Nguyễn Chí Tâm đã được chuẩn hóa cả bản Tiếng Việt và Tiếng Anh! Tâm là sinh viên CNTT FPT Polytechnic với GPA 3.65/4.0, thành thạo PHP, MySQL, React và tích hợp AI.\n\n[ACTION:OPEN_CV]";
     }
 
     if (q.includes("erp") || q.includes("restaurant") || q.includes("nhà hàng")) {
@@ -1324,8 +1306,8 @@ DUAL CAPABILITIES:
 
     if (q.includes("gpa") || q.includes("học vấn") || q.includes("điểm") || q.includes("fpt") || q.includes("education")) {
       return isEn
-        ? "🎓 **Education**: FPT Polytechnic College - Dong Nai Campus (Major: Web Development).\n- **Cumulative GPA**: **3.69 / 4.0** (8.8 / 10).\n- **Honors**: 5 consecutive semesters recognized as Excellent Student."
-        : "🎓 **Học vấn**: Trường Cao Đẳng FPT Polytechnic Cơ Sở Đồng Nai (Chuyên ngành: Lập trình Web).\n- **GPA Tích Lũy**: **3.69 / 4.0** (8.8 / 10).\n- **Thành tích**: 5 kỳ liên tiếp đạt danh hiệu Sinh viên Giỏi.";
+        ? "🎓 **Education**: FPT Polytechnic College - Dong Nai Campus (Major: Web Development).\n- **Cumulative GPA**: **3.65 / 4.0**.\n- **Honors**: 5 consecutive semesters recognized as Excellent Student."
+        : "🎓 **Học vấn**: Trường Cao Đẳng FPT Polytechnic Cơ Sở Đồng Nai (Chuyên ngành: Lập trình Web).\n- **GPA Tích Lũy**: **3.65 / 4.0**.\n- **Thành tích**: 5 kỳ liên tiếp đạt danh hiệu Sinh viên Giỏi.";
     }
 
     if (q.includes("liên hệ") || q.includes("contact") || q.includes("phỏng vấn") || q.includes("sđt") || q.includes("phone") || q.includes("email") || q.includes("zalo")) {
@@ -1456,7 +1438,7 @@ DUAL CAPABILITIES:
       : [
           { label: "💼 Dự án tiêu biểu", query: "Cho tôi xem các dự án tiêu biểu của Tâm" },
           { label: "🛠️ Kỹ năng Full-Stack", query: "Tâm thành thạo những ngôn ngữ và công nghệ nào?" },
-          { label: "🎓 Điểm GPA 3.69", query: "Thông tin học vấn và điểm GPA của Tâm thế nào?" },
+          { label: "🎓 Điểm GPA 3.65", query: "Thông tin học vấn và điểm GPA của Tâm thế nào?" },
           { label: "📄 Xem & Tải CV", query: "Tôi muốn xem và tải CV của Tâm" },
           { label: "📞 Liên hệ phỏng vấn", query: "Làm thế nào để liên hệ phỏng vấn Tâm?" },
           { label: "💬 Trò chuyện tâm sự", query: "Kể cho tôi nghe một câu chuyện vui về nghề lập trình đi!" }
