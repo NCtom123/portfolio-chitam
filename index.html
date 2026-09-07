@@ -595,25 +595,25 @@
         <div class="cv-modal-title">
           <i class="bi bi-file-earmark-person-fill"></i>
           <div>
-            <h3>Curriculum Vitae</h3>
-            <p>Nguyễn Chí Tâm – Web Developer</p>
+            <h3 data-i18n="cv.title">Curriculum Vitae</h3>
+            <p id="cvModalSubtitle" data-i18n="cv.subtitle">Nguyễn Chí Tâm – Lập Trình Web</p>
           </div>
         </div>
         <div class="cv-modal-actions">
-          <a href="cv/nguyen_chi_tam.pdf" download="nguyen_chi_tam.pdf" class="btn-cv-download" title="Tải CV về máy">
+          <a href="cv/nguyen_chi_tam.pdf" download="CV_Nguyen_Chi_Tam_VI.pdf" class="btn-cv-download" id="cvDownloadBtn" title="Tải CV về máy">
             <i class="bi bi-download"></i> <span data-i18n="cv.download">Tải về CV</span>
           </a>
-          <a href="cv/nguyen_chi_tam.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-external" title="Mở trong tab mới">
+          <a href="cv/nguyen_chi_tam.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-external" id="cvExternalBtn" title="Mở trong tab mới">
             <i class="bi bi-box-arrow-up-right"></i>
           </a>
           <button class="btn-cv-close" id="closeCvModal" aria-label="Đóng">&times;</button>
         </div>
       </div>
       <div class="cv-modal-body">
-        <iframe src="cv/nguyen_chi_tam.pdf#toolbar=1&navpanes=0" class="cv-iframe" title="CV Nguyễn Chí Tâm"></iframe>
+        <iframe id="cvIframe" src="cv/nguyen_chi_tam.pdf#toolbar=1&navpanes=0" class="cv-iframe" title="CV Nguyễn Chí Tâm"></iframe>
         <div class="cv-fallback">
           <p data-i18n="cv.fallback">Trình duyệt của bạn không hỗ trợ xem trực tiếp PDF.</p>
-          <a href="cv/nguyen_chi_tam.pdf" download="nguyen_chi_tam.pdf" class="btn" data-i18n="cv.downloadNow">Tải về CV ngay</a>
+          <a id="cvFallbackBtn" href="cv/nguyen_chi_tam.pdf" download="CV_Nguyen_Chi_Tam_VI.pdf" class="btn" data-i18n="cv.downloadNow">Tải về CV ngay</a>
         </div>
       </div>
     </div>

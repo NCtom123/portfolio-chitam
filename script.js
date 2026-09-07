@@ -153,6 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "lightbox.fullView": "Ảnh gốc",
       "lightbox.navHint": "Chuyển ảnh",
       "lightbox.closeHint": "Đóng",
+      "cv.title": "Curriculum Vitae",
+      "cv.subtitle": "Nguyễn Chí Tâm – Lập Trình Web",
       "cv.download": "Tải về CV",
       "cv.fallback": "Trình duyệt của bạn không hỗ trợ xem trực tiếp PDF.",
       "cv.downloadNow": "Tải về CV ngay",
@@ -242,6 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "lightbox.fullView": "Original Image",
       "lightbox.navHint": "Navigate",
       "lightbox.closeHint": "Close",
+      "cv.title": "Curriculum Vitae",
+      "cv.subtitle": "Nguyen Chi Tam – Web Developer",
       "cv.download": "Download CV",
       "cv.fallback": "Your browser does not support viewing PDFs directly.",
       "cv.downloadNow": "Download CV Now",
@@ -259,6 +263,39 @@ document.addEventListener("DOMContentLoaded", () => {
       "contact.formEmail": "Email Address",
       "contact.formMsg": "Message",
       "contact.formBtn": "Send Message"
+    }
+  };
+
+  const updateCvModalLanguage = (lang) => {
+    const isEn = lang === "en";
+    const cvPath = isEn ? "cv/nguyen_chi_tam_en.pdf" : "cv/nguyen_chi_tam.pdf";
+    const downloadName = isEn ? "CV_Nguyen_Chi_Tam_Web_Developer_EN.pdf" : "CV_Nguyen_Chi_Tam_Lap_Trinh_Web_VI.pdf";
+    
+    const cvIframe = document.getElementById("cvIframe");
+    const cvDownloadBtn = document.getElementById("cvDownloadBtn");
+    const cvExternalBtn = document.getElementById("cvExternalBtn");
+    const cvFallbackBtn = document.getElementById("cvFallbackBtn");
+    const cvSubtitle = document.getElementById("cvModalSubtitle");
+
+    if (cvIframe) {
+      cvIframe.src = `${cvPath}#toolbar=1&navpanes=0`;
+      cvIframe.title = isEn ? "CV Nguyen Chi Tam - Web Developer" : "CV Nguyễn Chí Tâm - Lập Trình Web";
+    }
+    if (cvDownloadBtn) {
+      cvDownloadBtn.href = cvPath;
+      cvDownloadBtn.setAttribute("download", downloadName);
+      cvDownloadBtn.setAttribute("title", isEn ? "Download CV (English version)" : "Tải CV về máy (Bản tiếng Việt)");
+    }
+    if (cvExternalBtn) {
+      cvExternalBtn.href = cvPath;
+      cvExternalBtn.setAttribute("title", isEn ? "Open CV in new tab" : "Mở CV trong tab mới");
+    }
+    if (cvFallbackBtn) {
+      cvFallbackBtn.href = cvPath;
+      cvFallbackBtn.setAttribute("download", downloadName);
+    }
+    if (cvSubtitle) {
+      cvSubtitle.textContent = isEn ? "Nguyen Chi Tam – Web Developer" : "Nguyễn Chí Tâm – Lập Trình Web";
     }
   };
 
@@ -293,6 +330,9 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.setAttribute("data-tooltip", lang === "en" ? "View CV" : "Xem CV");
       btn.setAttribute("title", lang === "en" ? "View CV" : "Xem CV");
     });
+
+    // Update CV Modal PDF file, title, and download target
+    updateCvModalLanguage(lang);
 
     // Update Lightbox if callback registered
     if (typeof onLanguageChangeCallback === "function") {
@@ -436,6 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeCvModalBackdrop = document.getElementById("closeCvModalBackdrop");
 
   const openCvModal = () => {
+    updateCvModalLanguage(currentLang);
     if (cvModal) {
       cvModal.classList.add("active");
       document.body.style.overflow = "hidden";
