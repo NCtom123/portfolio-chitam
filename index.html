@@ -742,6 +742,135 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
+  <!-- Draggable AI Chatbot Floating Trigger -->
+  <div id="aiChatToggleWrapper" class="ai-chat-toggle-wrapper">
+    <button id="aiChatToggle" class="ai-chat-toggle" aria-label="Mở Trợ lý AI" title="Trò chuyện cùng Tam AI (Có thể kéo thả di chuyển)">
+      <div class="ai-toggle-avatar">
+        <!-- Robot Chibi SVG Animation -->
+        <svg class="robot-chibi-svg" viewBox="0 0 100 100" width="38" height="38" aria-hidden="true">
+          <!-- Antenna with glowing bulb -->
+          <line x1="50" y1="20" x2="50" y2="10" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round"/>
+          <circle class="robot-antenna-bulb" cx="50" cy="8" r="5" fill="#38bdf8"/>
+          <!-- Head / Helmet -->
+          <rect x="18" y="20" width="64" height="52" rx="20" fill="url(#botHeadGrad)" stroke="#38bdf8" stroke-width="2.5"/>
+          <!-- Ears / Headset -->
+          <rect x="11" y="34" width="7" height="24" rx="3.5" fill="#0284c7"/>
+          <rect x="82" y="34" width="7" height="24" rx="3.5" fill="#0284c7"/>
+          <!-- Face Screen -->
+          <rect x="25" y="27" width="50" height="38" rx="13" fill="#0f172a"/>
+          <!-- Eyes with blinking animation -->
+          <ellipse class="robot-eye robot-eye-left" cx="39" cy="42" rx="4.5" ry="6" fill="#38bdf8"/>
+          <ellipse class="robot-eye robot-eye-right" cx="61" cy="42" rx="4.5" ry="6" fill="#38bdf8"/>
+          <!-- Eye reflection shine -->
+          <circle cx="41" cy="40" r="1.5" fill="#ffffff"/>
+          <circle cx="63" cy="40" r="1.5" fill="#ffffff"/>
+          <!-- Cute Smile -->
+          <path d="M 43 53 Q 50 60 57 53" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Gradients -->
+          <defs>
+            <linearGradient id="botHeadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0284c7"/>
+              <stop offset="100%" stop-color="#2563eb"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <!-- Online Status Dot -->
+      <span class="ai-online-badge" title="Tam AI đang Online"></span>
+    </button>
+  </div>
+
+  <!-- AI Chatbox Window (Modern Glassmorphism) -->
+  <div id="aiChatbox" class="ai-chatbox" aria-hidden="true" role="dialog" aria-label="Khung trò chuyện cùng Tam AI">
+    <!-- Header -->
+    <div class="ai-chatbox-header">
+      <div class="ai-header-info">
+        <div class="ai-header-avatar">
+          <svg class="robot-chibi-svg header-robot-chibi" viewBox="0 0 100 100" width="34" height="34" aria-hidden="true">
+            <line x1="50" y1="20" x2="50" y2="10" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round"/>
+            <circle class="robot-antenna-bulb" cx="50" cy="8" r="5" fill="#38bdf8"/>
+            <rect x="18" y="20" width="64" height="52" rx="20" fill="url(#botHeadGrad)" stroke="#38bdf8" stroke-width="2.5"/>
+            <rect x="11" y="34" width="7" height="24" rx="3.5" fill="#0284c7"/>
+            <rect x="82" y="34" width="7" height="24" rx="3.5" fill="#0284c7"/>
+            <rect x="25" y="27" width="50" height="38" rx="13" fill="#0f172a"/>
+            <ellipse class="robot-eye robot-eye-left" cx="39" cy="42" rx="4.5" ry="6" fill="#38bdf8"/>
+            <ellipse class="robot-eye robot-eye-right" cx="61" cy="42" rx="4.5" ry="6" fill="#38bdf8"/>
+            <circle cx="41" cy="40" r="1.5" fill="#ffffff"/>
+            <circle cx="63" cy="40" r="1.5" fill="#ffffff"/>
+            <path d="M 43 53 Q 50 60 57 53" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <span class="ai-header-dot"></span>
+        </div>
+        <div class="ai-header-titles">
+          <div class="ai-header-name">
+            <strong>Tam AI</strong>
+            <span class="ai-engine-chip" id="aiEngineBadge">Gemini AI</span>
+          </div>
+          <p class="ai-header-sub" data-i18n="ai.status">Trợ lý ảo & Bạn đồng hành của Tâm</p>
+        </div>
+      </div>
+      <div class="ai-header-actions">
+        <button id="aiSettingsBtn" class="ai-action-btn" title="Cài đặt khóa API Gemini" aria-label="Cài đặt API">
+          <i class="bi bi-gear-fill"></i>
+        </button>
+        <button id="aiClearBtn" class="ai-action-btn" title="Xóa lịch sử trò chuyện" aria-label="Xóa chat">
+          <i class="bi bi-arrow-counterclockwise"></i>
+        </button>
+        <button id="aiCloseBtn" class="ai-action-btn ai-close-btn" title="Thu nhỏ" aria-label="Đóng chat">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Messages Container -->
+    <div id="aiChatMessages" class="ai-chat-messages">
+      <!-- Messages rendered dynamically -->
+    </div>
+
+    <!-- Quick Prompts Chips Container -->
+    <div id="aiQuickChips" class="ai-quick-chips">
+      <!-- Dynamic chips: Projects, Skills, GPA, CV, Contact, Fun chat -->
+    </div>
+
+    <!-- Typing Indicator -->
+    <div id="aiTypingIndicator" class="ai-typing-indicator" style="display: none;">
+      <div class="ai-typing-avatar">🤖</div>
+      <div class="ai-typing-bubble">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Chat Input Area -->
+    <form id="aiChatForm" class="ai-chat-form">
+      <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Hỏi về Tâm hoặc tâm sự gì đó..." autocomplete="off" maxlength="500" required />
+      <button type="submit" id="aiSendBtn" class="ai-send-btn" aria-label="Gửi tin nhắn" title="Gửi (Enter)">
+        <i class="bi bi-send-fill"></i>
+      </button>
+    </form>
+
+    <!-- Settings Modal for Gemini API Key -->
+    <div id="aiSettingsModal" class="ai-settings-modal" style="display: none;">
+      <div class="ai-settings-card">
+        <div class="ai-settings-header">
+          <h4><i class="bi bi-key-fill"></i> <span data-i18n="ai.settingsTitle">Cấu hình Gemini API</span></h4>
+          <button id="closeAiSettingsBtn" class="ai-action-btn" aria-label="Đóng cài đặt">&times;</button>
+        </div>
+        <p class="ai-settings-desc" data-i18n="ai.settingsDesc">
+          Nhập Google Gemini API Key để mở khóa khả năng trò chuyện tự do không giới hạn. Khóa được lưu an toàn trong trình duyệt của bạn (Local Storage) và không bao giờ gửi đi nơi khác.
+        </p>
+        <div class="ai-settings-input-group">
+          <input type="password" id="aiApiKeyInput" class="ai-api-input" placeholder="Dán khóa API của bạn tại đây (AIzaSy... hoặc AQ...)" />
+          <button type="button" id="aiToggleKeyVisibility" class="btn-toggle-vis" title="Hiện/ẩn khóa"><i class="bi bi-eye"></i></button>
+        </div>
+        <div class="ai-settings-actions">
+          <button type="button" id="aiSaveKeyBtn" class="btn btn-sm btn-primary"><i class="bi bi-check-lg"></i> <span data-i18n="ai.saveKey">Lưu khóa</span></button>
+          <button type="button" id="aiRemoveKeyBtn" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> <span data-i18n="ai.removeKey">Xóa khóa</span></button>
+        </div>
+        <div class="ai-settings-status" id="aiKeyStatus"></div>
+      </div>
+    </div>
+  </div>
+
   <div id="toastNotification" class="toast-notification" role="status" aria-live="polite">
     <div class="toast-icon"><i class="bi bi-check-circle-fill"></i></div>
     <div class="toast-message" id="toastMessage">Tin nhắn đã được gửi thành công!</div>
